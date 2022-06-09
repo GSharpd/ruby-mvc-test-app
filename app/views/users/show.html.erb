@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<%= gravatar_for @user, size: 150 %>
+
+<%= render @user %>
+
+<h3>Articles:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td>by <%= article.user.username if article.user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+
+<div>
+  <%= link_to "Back to articles", articles_path %>
+</div>
